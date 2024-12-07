@@ -1,0 +1,15 @@
+	Adiciones
+ - Ahora puedes abrir Archivos de audio con Magirenko Music
+ - Changelogs de lo nuevo en la pantalla de bienvenida
+	Cambios
+ - Se quitaron todas las referencias de "MagicM Music" en el codigo fuente (puede ser que haya mas)
+ - Las optimizaciones de compilacion de .NET se cambio a release, esto es por que pesaba mas.
+ - Se arreglo el error tipografico en el texto de la version de la pantalla de bienvenida "magicrenko"
+ - Se arreglaron los metadatos del Ejecutable
+ - Se quito la posibilidad de Cambiar el tamaño de la ventana y maximizarlo.
+ - la ventana de bienvenida se hizo un poco mas ancho y el mensaje de bienvenida se movio un poco hacia la derecha para darle espacio al changelog.
+	Arreglo de Bugs
+ - Se arreglo el bug que el bucle no funcionaba.
+ - Se arreglo la "g" un poco recortada en el texto de la version (no tan notable)
+
+ Mas informacion en 
