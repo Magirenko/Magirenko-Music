@@ -1,0 +1,48 @@
+﻿<Window x:Name="MusicOverlayWindow" x:Class="Magirenko_Music.MusicOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Magirenko_Music"
+        mc:Ignorable="d"
+        Title="Superposición de Magirenko Music"
+        Height="80"
+        Width="375"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        Foreground="{x:Null}"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Focusable="False"
+        Left="10"
+        Top="905">
+    <Window.Background>
+        <SolidColorBrush Color="Black" Opacity="0.4"/>
+    </Window.Background>
+    <Grid x:Name="MainGrid" Width="350" Height="75" VerticalAlignment="Top" Margin="0,5,0,0">
+        <Grid x:Name="MusicOptions" Width="350" Height="40" VerticalAlignment="Bottom" Margin="0,0,0,0">
+            <Rectangle Fill="White" Height="4" Width="330" Margin="10,7,10,29" />
+            <Rectangle x:Name="MusicProgress" Height="18" Width="11" Fill="White" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Position" Content="Cargando..." Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Height="18" Padding="0,0,0,0" Margin="0,16,0,0"/>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="16" Height="20" Margin="0,0,13,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="CambiarEstado">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image x:Name="Estado" Source="Assets/Iconos/Pausa.png" Stretch="UniformToFill" ToolTip="Pausar Musica" />
+                </StackPanel>
+            </Button>
+            <Slider x:Name="Volumen" Width="100" Foreground="{x:Null}" Height="18" Maximum="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="23,0,0,4" SmallChange="1" ToolTip="Volumen"/>
+            <Label x:Name="VolumenLabel" Content="Cargando..." Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="14" Padding="0,0,0,0" Margin="49,0,0,0" FontSize="10"/>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="20" Height="20" Margin="0,0,36,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="CambiarBucle" Padding="0,0,0,0">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image x:Name="Bucle" Source="Assets/Iconos/bucle.png" Stretch="UniformToFill" ToolTip="Quitar el Bucle" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid x:Name="MusicPlaying" Width="350" Height="30" VerticalAlignment="Top" Margin="0,2,0,0">
+            <Image Height="20" Width="20" HorizontalAlignment="Left" Source="/Assets/Iconos/nota_musical.png" Margin="10,2,0,3"/>
+            <Grid x:Name="LabelGrid" Width="315" Height="20" Margin="35,0,0,0" ClipToBounds="True">
+                <Label x:Name="musiclabel" Content="Reproduciendo: ???" HorizontalAlignment="Left" Width="340" Height="20" Foreground="#FFFDFDFD" Background="#00000000" VerticalContentAlignment="Center" VerticalAlignment="Center" AutomationProperties.IsOffscreenBehavior="Onscreen" Padding="0,0,0,0" Margin="0,0,0,0" FontSize="16"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

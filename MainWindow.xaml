@@ -1,0 +1,47 @@
+﻿<Window x:Name="Main" x:Class="Magirenko_Music.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Magirenko_Music"
+        mc:Ignorable="d"
+        Title="Magirenko Music" Height="450" Width="825" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="/Assets/Iconos/logo.png" MinWidth="700" MinHeight="425" MaxHeight="625" MaxWidth="900" ResizeMode="CanMinimize">
+    <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Width="775" Height="400">
+        <Grid x:Name="grid1">
+            <Label Content="Magirenko Music v0.2" Height="25" Width="152" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,0"/>
+            <Label Content="Bienvenido a Magirenko Music!" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Black" Margin="250,0,0,325" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="374" FontSize="14" Margin="250,110,0,0">
+                <TextBlock x:Name="desc" TextWrapping="Wrap" Text="Magirenko Music es un reproductor de musica para escuchar musica de fondo en tu pc mientras haces otras cosas!"/>
+            </Label>
+            <Button Name="Boton1" Content="Continuar" Height="25" Width="76" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="250,250,0,0" Click="Boton1_Clicked"/>
+            <Image Height="167" Width="256" Source="/Assets/Iconos/logo.png" Margin="250,0,0,120" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Height="350" Width="325" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center">
+                <TextBlock x:Name="Cambios" TextWrapping="Wrap" FontSize="10">
+                     <Run FontSize="20">Que hay de nuevo en la v0.2?</Run>
+               </TextBlock>
+            </Label>
+        </Grid>
+        <Grid x:Name="grid2" Visibility="Hidden">
+            <ListView x:Name="ListaGeneral" VerticalAlignment="Top" HorizontalAlignment="Center" SelectionMode="Single" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" IsSynchronizedWithCurrentItem="True" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,93,0,0" Width="{Binding ActualWidth, ElementName=Main, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=Main, Mode=OneWay}">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Header="" Width="25" DisplayMemberBinding="{Binding portada}"/>
+                        <GridViewColumn Header="Titulo" Width="250" DisplayMemberBinding="{Binding titulo}"/>
+                        <GridViewColumn Header="Playlist" Width="150" DisplayMemberBinding="{Binding playlist}"/>
+                        <GridViewColumn Header="Duracion" Width="75" DisplayMemberBinding="{Binding duracion}"/>
+                        <GridViewColumn Header="Carpeta" Width="276" DisplayMemberBinding="{Binding carpeta}"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="500" FontSize="12" Margin="0,0,0,300">
+                <TextBlock x:Name="empezando" TextWrapping="WrapWithOverflow" Text="Esta es la seleccion de musicas que tienes guardado en C:\users\nombre\Music!
+                           para empezar, Dale doble click a la musica que quieres reproducir." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
+            </Label>
+        </Grid>
+    </Grid>
+</Window>
