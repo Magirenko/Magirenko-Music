@@ -256,6 +256,7 @@ namespace Magirenko_Music
                     MusicItem item = new MusicItem() { titulo = file.Tag.Title ?? "Sin nombre", duracion = file.Properties.Duration.ToString(@"mm\:ss"), portada = "𝆕", carpeta = "?", ubicacion = info.FullName };
                     ListaPl.Items.Add(item);
                 }
+                grid1.Visibility = Visibility.Hidden;
                 grid2.Visibility = Visibility.Hidden;
                 PlCreation.Visibility = Visibility.Hidden;
                 PlScreen.Visibility = Visibility.Visible;

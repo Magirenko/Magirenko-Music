@@ -35,11 +35,17 @@ namespace Magirenko_Music
             }
         }
         string[] acceptedFormats = { ".mp3", ".aac", ".ogg", ".wav", ".flac", ".m4a" };
+        bool firsttime = true;
         public void LoadMusic(string? path, Playlist? playlist = null, int musica = 0)
         {
             music.Stop();
             try
             {
+                if (firsttime == true)
+                {
+                    CambiarBucle(null, EventArgs.Empty);
+                    firsttime = false;
+                }
                 if (playlist != null)
                 {
                     pl = playlist;
@@ -47,6 +53,8 @@ namespace Magirenko_Music
                     this.Top = 885;
                     ndemusica.Content = "Musica " + (musica + 1).ToString() + " de " + pl.CantidadDeMusicas.ToString();
                     musicaactual = musica;
+                    CambiarBucle(null, EventArgs.Empty);
+                    CambiarBucle(null, EventArgs.Empty);
                 }
                 else
                 {
@@ -55,7 +63,7 @@ namespace Magirenko_Music
                     this.Top = 905;
                     ndemusica.Content = "Cargando...";
                     musicaactual = 0;
-                    music.MediaEnded -= siguientemusica;
+
                 }
                 TagLib.File musicInfo = TagLib.File.Create(pl == null ? path : pl.Musicas[musica]);
                 if (musicInfo.PossiblyCorrupt)
@@ -152,7 +160,6 @@ namespace Magirenko_Music
             {
                 timer.Start();
                 Volumen.Value = 2;
-                CambiarBucle(null, EventArgs.Empty);
             }
             catch (Exception ex)
             {
@@ -221,7 +228,6 @@ namespace Magirenko_Music
                 if (Loop == 1)
                 {
                     music.MediaEnded += startAgain;
-                    music.MediaEnded -= startAgain;
                     Bucle.Source = new BitmapImage(new Uri("/Assets/Iconos/bucle_o_refrescar.png", UriKind.Relative));
                     Loop = 0;
                     Bucle.ToolTip = "Quitar el Bucle";
