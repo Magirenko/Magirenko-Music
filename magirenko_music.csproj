@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Magirenko_Music</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>False</UseWindowsForms>
+    <ApplicationIcon>Assets\Iconos\logo.ico</ApplicationIcon>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <Title>Magirenko Music</Title>
+    <Description>Reproductor de Musica para Windows.</Description>
+	<GeneratedAssemblyInfoFile>AssemblyInfo.cs</GeneratedAssemblyInfoFile>
+    <Version>0.2</Version>
+    <Company>Magirenko Technologies</Company>
+    <Copyright>©Magirenko Technologies 2024</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Iconos\bucle_o_refrescar.png" />
+    <None Remove="Assets\Iconos\bucle_o_refrescar_oscuro.png" />
+    <None Remove="Assets\Iconos\logo.png" />
+    <None Remove="Assets\Iconos\nota_musical.png" />
+    <None Remove="Assets\Iconos\Pausa.png" />
+    <None Remove="Assets\Iconos\Reanudar.png" />
+    <None Remove="Assets\Iconos\sinbucle.png" />
+    <None Remove="changelog.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Iconos\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TagLibSharp" Version="2.3.0" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Resource Include="Assets\Iconos\bucle_o_refrescar.png" />
+    <Resource Include="Assets\Iconos\bucle_o_refrescar_oscuro.png" />
+    <Resource Include="Assets\Iconos\logo.png" />
+    <Resource Include="Assets\Iconos\nota_musical.png" />
+    <Resource Include="Assets\Iconos\Pausa.png" />
+    <Resource Include="Assets\Iconos\Reanudar.png" />
+    <Resource Include="Assets\Iconos\sinbucle.png" />
+    <EmbeddedResource Include="changelog.txt" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Reference Include="MMPL">
+      <HintPath>..\..\..\Documents\creaciones de migue\Bibliotecas\MMPL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
