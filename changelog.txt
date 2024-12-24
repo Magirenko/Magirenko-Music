@@ -1,15 +1,33 @@
 	Adiciones
- - Ahora puedes abrir Archivos de audio con Magirenko Music
- - Changelogs de lo nuevo en la pantalla de bienvenida
-	Cambios
- - Se quitaron todas las referencias de "MagicM Music" en el codigo fuente (puede ser que haya mas)
- - Las optimizaciones de compilacion de .NET se cambio a release, esto es por que pesaba mas.
- - Se arreglo el error tipografico en el texto de la version de la pantalla de bienvenida "magicrenko"
- - Se arreglaron los metadatos del Ejecutable
- - Se quito la posibilidad de Cambiar el tamaño de la ventana y maximizarlo.
- - la ventana de bienvenida se hizo un poco mas ancho y el mensaje de bienvenida se movio un poco hacia la derecha para darle espacio al changelog.
-	Arreglo de Bugs
- - Se arreglo el bug que el bucle no funcionaba.
- - Se arreglo la "g" un poco recortada en el texto de la version (no tan notable)
+ - Una de las actualizaciones mas esperadas: Playlists!
+    - Puedes crear playlists en el menu de archivo > playlists > nueva playlist
+	- Puedes abrir playlists en el menu de archivo > playlists > abrir playlist
+	- Puedes importar una playlist a la carpeta de musics en el menu de archivo > playlists > importar playlists.
+	- Ahora hay un nuevo formato y extension de archivo para las playlists! (una de las cosas mas impresionantes que Magirenko ha hecho)
+	- Las playlists tienen un titulo, autor y descripcion.
+	- Puedes abrir un archivo .MMPL con Magirenko Music v0.4 para abrirlo desde la extension.
+	- Hay 2 ventanas nuevas de la creacion de playlist y informacion de una playlist.
+	- Libreria de clases de WPF para manipular playlists, se puede encontrar en los binarios de Magirenko Music v0.4.
+ - adelantamiento de tiempo de musica
+    - Arrastra la linea de tiempo de la musica para cambiar su posicion.
+	- Puedes presionar las teclas de las flechas izquierda y derecha para adelantar o atrasar la posicion de la musica.
+ - Menu de archivo
+    - ahora existe un menu de archivo para hacer varias acciones:
+	  - Abrir musicas
+	  - Importar musicas
+	  - Abrir playlists
+	  - Importar playlists
+	  - Crear Playlists
+ - Se añadio mas manejo de errores (los mensajes que aparecen cuando hay un error desconocido)
+ - Se añadio un boton para cambiar la vista de Musicas o playlists
+ - Se añadio un boton de recargar las listas.
 
- Mas informacion en 
+	Cambios
+ - Se cambio la linea de tiempo de la reproduccion de musica para que se pueda cambiar la posicion
+ - Ya no hay redirecciones de url en la lista de cambios por la deteccion de antivirus
+ - ahora el nombre del ejecutable y del DLL se llaman "magirenko_music"
+ - ahora en el texto de la version aparece la etapa de Magirenko Music (alfa)
+ - Se eliminaron mas referencias de MagicM en el codigo fuente.
+
+	Arreglo de bugs
+ - Se arreglo el bug que cuando se abre un archivo con formato o extension incompatible, Magirenko Music sigue abierto y se reproduce una musica desconocida.
