@@ -1,15 +1,11 @@
 ﻿using Magirenko.MMPL;
 using Microsoft.Win32;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.Xml;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Shell;
 
 namespace Magirenko_Music
 {
@@ -23,32 +19,40 @@ namespace Magirenko_Music
         public Playlist pl;
         public MainWindow()
         {
-            Console.WriteLine("Cargando Ventana...");
-            InitializeComponent();
-            dialog.Multiselect = true;
-            Loaded += Cargado;
-            Closed += Cerrar;
-            ListaGeneral.Drop += drop;
-            ListaPlView.Drop += drop;
+            try
+            {
+                Console.WriteLine("Cargando Ventana...");
+                InitializeComponent();
+                dialog.Multiselect = true;
+                Loaded += Cargado;
+                Closed += Cerrar;
+                ListaGeneral.Drop += drop;
+                ListaPlView.Drop += drop;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+                App.Current.Shutdown();
+            }
         }
 
         string[] acceptedFormats = { ".mp3", ".aac", ".ogg", ".wav", ".flac", ".m4a" };
 
         public class MusicItem()
         {
-            public required string portada { get; set; }
-            public required string titulo { get; set; }
-            public required string duracion { get; set; }
-            public required string carpeta { get; set; }
-            public required string ubicacion { get; set; }
+            public string? portada { get; set; }
+            public string? titulo { get; set; }
+            public string? duracion { get; set; }
+            public string? carpeta { get; set; }
+            public string? ubicacion { get; set; }
         }
         public class PlaylistItem()
         {
-            public required string portada { get; set; }
-            public required string titulo { get; set; }
-            public required string musicas { get; set; }
-            public required string carpeta { get; set; }
-            public required string ubicacion { get; set; }
+            public string? portada { get; set; }
+            public string? titulo { get; set; }
+            public string? musicas { get; set; }
+            public string? carpeta { get; set; }
+            public string? ubicacion { get; set; }
         }
 
         enum ViewType
@@ -61,10 +65,17 @@ namespace Magirenko_Music
 
         private void Boton1_Clicked(object sender, RoutedEventArgs e)
         {
-            grid1.Visibility = Visibility.Hidden;
-            grid1.IsEnabled = false;
-            grid2.Visibility = Visibility.Visible;
-            grid2.IsEnabled = true;
+            try
+            {
+                grid1.Visibility = Visibility.Hidden;
+                grid1.IsEnabled = false;
+                grid2.Visibility = Visibility.Visible;
+                grid2.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Cargado(object? sender, EventArgs e)
@@ -99,6 +110,7 @@ namespace Magirenko_Music
                     FileInfo musicInfo = new FileInfo(path);
                     MusicItem MusicItem = new MusicItem() { ubicacion = musicInfo.FullName, portada = "𝆕", titulo = music.Tag.Title ?? System.IO.Path.GetFileNameWithoutExtension(music.Name), duracion = music.Properties.Duration.ToString(@"mm\:ss"), carpeta = musicInfo.Directory == null ? "?" : musicInfo.Directory.Name };
                     ListaGeneral.Items.Add(MusicItem);
+                    music.Dispose();
                 }
 
                 foreach (string path in Directory.EnumerateFiles(@"C:\Users\" + Environment.UserName + @"\Music", "*.*", SearchOption.AllDirectories)
@@ -143,28 +155,49 @@ namespace Magirenko_Music
         public MusicOverlay overlay = new MusicOverlay();
         public void ReproducirMusica(string musicPath, bool OpenedWith, ListView lista, Playlist? pl = null, int musica = 0)
         {
-            overlay.LoadMusic(musicPath, pl, musica);
-            overlay.Show();
-            ActualMusic = OpenedWith == false ? ((MusicItem)(lista.SelectedItem)).ubicacion : musicPath;
+            try
+            {
+                overlay.LoadMusic(musicPath, pl, musica);
+                overlay.Show();
+                ActualMusic = OpenedWith == false ? ((MusicItem)(lista.SelectedItem)).ubicacion : musicPath;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Cerrar(object? sender, EventArgs e)
         {
-            overlay.Close();
+            try
+            {
+                overlay.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ListViewItem_MouseDoubleClick(object? sender, MouseEventArgs e)
         {
-            if (ListaGeneral.Visibility == Visibility.Visible)
+            try
             {
-                if (ActualMusic != ((MusicItem)(ListaGeneral.SelectedItem)).ubicacion)
+                if (ListaGeneral.Visibility == Visibility.Visible)
                 {
-                    ReproducirMusica(((MusicItem)(ListaGeneral.SelectedItem)).ubicacion, false, ListaGeneral);
+                    if (ActualMusic != ((MusicItem)(ListaGeneral.SelectedItem)).ubicacion)
+                    {
+                        ReproducirMusica(((MusicItem)(ListaGeneral.SelectedItem)).ubicacion, false, ListaGeneral);
+                    }
+                }
+                else if (ListaPlView.Visibility == Visibility.Visible)
+                {
+                    abrirpl(((PlaylistItem)(ListaPlView.SelectedItem)).ubicacion, false);
                 }
             }
-            else if (ListaPlView.Visibility == Visibility.Visible)
+            catch (Exception ex)
             {
-                abrirpl(((PlaylistItem)(ListaPlView.SelectedItem)).ubicacion, false);
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -233,7 +266,14 @@ namespace Magirenko_Music
 
         private void reproducirplmusica(object? sender, MouseEventArgs e)
         {
-            ReproducirMusica(((MusicItem)(ListaPl.SelectedItem)).ubicacion, false, ListaPl, pl, ListaPl.Items.IndexOf((MusicItem)(ListaPl.SelectedItem)));
+            try
+            {
+                ReproducirMusica(((MusicItem)(ListaPl.SelectedItem)).ubicacion, false, ListaPl, pl, ListaPl.Items.IndexOf((MusicItem)(ListaPl.SelectedItem)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void abrirpl(string ruta, bool OpenWith = false)
@@ -263,7 +303,7 @@ namespace Magirenko_Music
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error al abrir playlist", MessageBoxButton.OK, MessageBoxImage.Error);
                 if (OpenWith == true)
                 {
                     App.Current.Shutdown();
@@ -336,7 +376,7 @@ namespace Magirenko_Music
                 bool IsValid = true;
                 foreach (string l in plmusicas.Text.Replace("\r", string.Empty).Split(char.Parse("\n")))
                 {
-                    if (Path.Exists(l))
+                    if (!string.IsNullOrEmpty(Path.GetDirectoryName(l)) || !string.IsNullOrEmpty(Path.GetFileName(l)))
                     {
                         if (System.IO.File.Exists(l))
                         {
@@ -375,11 +415,13 @@ namespace Magirenko_Music
                         temp = Path.Combine(Path.GetDirectoryName(temp), Path.GetFileNameWithoutExtension(temp) + ".mp3");
                         using (FileStream f = File.Open(temp, FileMode.Open, FileAccess.Write))
                         {
-                            f.Write(File.ReadAllBytes(l));
+                            f.Write(File.ReadAllBytes(l), 0, File.ReadAllBytes(l).Length);
                         }
-                        TagLib.File file = TagLib.File.Create(temp);
+                        TagLib.File? file = TagLib.File.Create(temp);
                         file.Tag.Title = Path.GetFileNameWithoutExtension(l);
                         file.Save();
+                        file.Dispose();
+                        file = null;
                         temps.Add(temp);
                     }
                     Playlist pl = new Playlist($@"C:\Users\{Environment.UserName}\Music\" + plnombre.Text + ".mmpl", plnombre.Text, pldesc.Text, plautor.Text, temps.ToArray());
@@ -407,6 +449,9 @@ namespace Magirenko_Music
                 if (pl != null)
                 {
                     pl.DescargarMusicas();
+                    overlay.music.Close();
+                    overlay.Hide();
+                    overlay = new MusicOverlay();
                 }
                 ListaPl.Items.Clear();
             }
@@ -418,46 +463,60 @@ namespace Magirenko_Music
 
         private void cambiarver(object sender, SelectionChangedEventArgs e)
         {
-            int index = ((ComboBox)(sender)).Items.IndexOf(e.AddedItems[0]);
-            switch (index)
+            try
             {
-                case 0:
-                    ver = ViewType.Musicas;
-                    break;
-                case 1:
-                    ver = ViewType.Playlists;
-                    break;
-                default:
-                    MessageBox.Show("Se puso un tipo de vista desconocido.", "Error al cambiar Vista", MessageBoxButton.OK, MessageBoxImage.Error);
-                    break;
+                int index = ((ComboBox)(sender)).Items.IndexOf(e.AddedItems[0]);
+                switch (index)
+                {
+                    case 0:
+                        ver = ViewType.Musicas;
+                        break;
+                    case 1:
+                        ver = ViewType.Playlists;
+                        break;
+                    default:
+                        MessageBox.Show("Se puso un tipo de vista desconocido.", "Error al cambiar Vista", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                }
+                Cargado(null, EventArgs.Empty);
             }
-            Cargado(null, EventArgs.Empty);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void drop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            try
             {
-                string[]? dropped = (string[])e.Data.GetData(DataFormats.FileDrop);
-                foreach (string p in dropped)
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 {
-                    if (Path.GetExtension(p) == ".mmpl")
+                    string[]? dropped = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    foreach (string p in dropped)
                     {
-                        if (ListaPlView.Visibility == Visibility.Visible)
+                        if (Path.GetExtension(p) == ".mmpl")
                         {
-                            System.IO.File.Copy(p, @"C:\Users\" + Environment.UserName + @"\Music\" + Path.GetFileName(p));
-                            Cargado(sender, EventArgs.Empty);
+                            if (ListaPlView.Visibility == Visibility.Visible)
+                            {
+                                System.IO.File.Copy(p, @"C:\Users\" + Environment.UserName + @"\Music\" + Path.GetFileName(p));
+                                Cargado(sender, EventArgs.Empty);
+                            }
                         }
-                    }
-                    else if (acceptedFormats.Contains(Path.GetExtension(p)))
-                    {
-                        if (ListaGeneral.Visibility == Visibility.Visible)
+                        else if (acceptedFormats.Contains(Path.GetExtension(p)))
                         {
-                            System.IO.File.Copy(p, @"C:\Users\" + Environment.UserName + @"\Music\" + Path.GetFileName(p));
-                            Cargado(sender, EventArgs.Empty);
+                            if (ListaGeneral.Visibility == Visibility.Visible)
+                            {
+                                System.IO.File.Copy(p, @"C:\Users\" + Environment.UserName + @"\Music\" + Path.GetFileName(p));
+                                Cargado(sender, EventArgs.Empty);
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

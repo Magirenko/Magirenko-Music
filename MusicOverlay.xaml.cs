@@ -15,9 +15,9 @@ namespace Magirenko_Music
     public partial class MusicOverlay : Window
     {
         private System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
-        private MediaPlayer music = new MediaPlayer();
-        private Playlist? pl = null;
-        private int musicaactual = 0;
+        public MediaPlayer music = new MediaPlayer();
+        private Playlist? pl;
+        private int musicaactual;
         public MusicOverlay()
         {
             try
@@ -77,9 +77,10 @@ namespace Magirenko_Music
                     Process.GetCurrentProcess().Kill();
                 }
                 MusicProgress.Maximum = musicInfo.Properties.Duration.TotalSeconds;
-                musiclabel.Content = "Reproduciendo: " + (pl != null ? ((musicInfo.Tag.Title != "") ? "Sin Nombre" : musicInfo.Tag.Title) : ((musicInfo.Tag.Title != "") ? Path.GetFileNameWithoutExtension(musicInfo.Name) : musicInfo.Tag.Title));
+                musiclabel.Content = "Reproduciendo: " + (pl != null ? ((!string.IsNullOrEmpty(musicInfo.Tag.Title)) ? "Sin Nombre" : musicInfo.Tag.Title) : ((!string.IsNullOrEmpty(musicInfo.Tag.Title)) ? Path.GetFileNameWithoutExtension(musicInfo.Name) : musicInfo.Tag.Title));
                 music.Open(pl == null ? new Uri(path) : new Uri(pl.Musicas[musica]));
                 music.Play();
+                musicInfo.Dispose();
             }
             catch (Exception ex)
             {
@@ -107,12 +108,12 @@ namespace Magirenko_Music
                     Position.Content = music.Position.ToString(@"mm\:ss");
                 }
 
-                if (Keyboard.IsKeyDown(Key.Right))
+                if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
                     timer.Tick += moveright;
                 }
 
-                if (Keyboard.IsKeyDown(Key.Left))
+                if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
                     timer.Tick += moveleft;
                 }
@@ -122,36 +123,46 @@ namespace Magirenko_Music
                 MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        double acc = 1;
         private void moveright(object sender, EventArgs e)
         {
-            music.Pause();
-            music.Position += new TimeSpan(0, 0, 0, 0, (int)(music.NaturalDuration.HasTimeSpan == true ? music.NaturalDuration.TimeSpan.TotalSeconds / 4 : 1 * acc));
-            acc = acc + 0.25;
-            if (Keyboard.IsKeyUp(Key.Right))
+            try
             {
-                acc = 1;
-                timer.Tick -= moveright;
-                if (State == 1)
+
+                music.Pause();
+                music.Position += new TimeSpan(0, 0, 0, 0, (int)((music.NaturalDuration.HasTimeSpan == true ? music.NaturalDuration.TimeSpan.TotalSeconds / 4 : 1) * 8));
+                if (Keyboard.IsKeyUp(Key.Right))
                 {
-                    music.Play();
+                    timer.Tick -= moveright;
+                    if (State == 1)
+                    {
+                        music.Play();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void moveleft(object sender, EventArgs e)
         {
-            music.Pause();
-            music.Position -= new TimeSpan(0, 0, 0, 0, (int)(music.NaturalDuration.HasTimeSpan == true ? music.NaturalDuration.TimeSpan.TotalSeconds / 4 : 1 * acc));
-            acc = acc + 0.25;
-            if (Keyboard.IsKeyUp(Key.Left))
+            try
             {
-                acc = 1;
-                timer.Tick -= moveleft;
-               if (State == 1)
+                music.Pause();
+                music.Position -= new TimeSpan(0, 0, 0, 0, (int)((music.NaturalDuration.HasTimeSpan == true ? music.NaturalDuration.TimeSpan.TotalSeconds / 4 : 1) * 8));
+                if (Keyboard.IsKeyUp(Key.Left))
                 {
-                    music.Play();
+                    timer.Tick -= moveleft;
+                    if (State == 1)
+                    {
+                        music.Play();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void loaded(object? sender, RoutedEventArgs e)
@@ -213,14 +224,21 @@ namespace Magirenko_Music
 
         private void siguientemusica(object? sender, EventArgs e)
         {
-            if (musicaactual < (pl.CantidadDeMusicas - 1))
+            try
             {
-                musicaactual += 1;
-                LoadMusic(null, pl, musicaactual);
+                if (musicaactual < (pl.CantidadDeMusicas - 1))
+                {
+                    musicaactual += 1;
+                    LoadMusic(null, pl, musicaactual);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        int Loop = 0;
+        int Loop;
         private void CambiarBucle(object? sender, EventArgs e)
         {
             try
@@ -235,7 +253,6 @@ namespace Magirenko_Music
                 else if (Loop == 0)
                 {
                     music.MediaEnded -= startAgain;
-                    Trace.WriteLine(pl);
                     if (pl != null)
                     {
                         music.MediaEnded += siguientemusica;
@@ -288,20 +305,34 @@ namespace Magirenko_Music
 
         private void drag(object sender, DragStartedEventArgs e)
         {
-            timer.Tick -= tick;
-            music.Pause();
+            try
+            {
+                timer.Tick -= tick;
+                music.Pause();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void stopdrag(object sender, DragCompletedEventArgs e)
         {
-            if (music.NaturalDuration.HasTimeSpan == true)
+            try
             {
-                music.Position = new TimeSpan(0, 0, 0, (int)(MusicProgress.Value));
-                timer.Tick += tick;
-                if (State == 1)
+                if (music.NaturalDuration.HasTimeSpan == true)
                 {
-                    music.Play();
+                    music.Position = new TimeSpan(0, 0, 0, (int)(MusicProgress.Value));
+                    timer.Tick += tick;
+                    if (State == 1)
+                    {
+                        music.Play();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Desconocido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

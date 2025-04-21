@@ -1,8 +1,9 @@
-	Solucion de bugs
- - Se arreglo el bug de Magirenko Music crasheando cuando se cerraba y si habia una playlist abierta no se eliminaban los temporales, esto pasaba desde la version v0.1 y Magirenko no se dio cuenta
- . Se arreglo el bug donde cuando se abre una playlist desde la extension de archivo aparecian todas las pantallas abiertas.
-
-La version v0.4 ha salido mal y tenia estos 2 bugs, y el primer bug fue uno grave para la v0.4, se acumulaban los temporales y ocupaba mucho espacio.
-
-Nuestras disculpas por no haber testeado bien Magirenko Music v0.4, a partir de ahora vamos a testear bien Magirenko Music antes de publicarlo, Esto no volvera a ocurrir
-- Sinceramente, Magirenko Technologies.
+	Cambios
+ - Ahora si le das a atras mientras una playlist esta abierta se quitara la musica que se este reproduciendo.
+ - Magirenko Music ahora usa .net 9.0!
+ - Ahora debes presionar CTRL+Derecha/CTRL+Izquierda para arrastrar la linea de tiempo de las musicas con flechas.
+ - Ahora no hay aceleracion cuando se arrastra la linea de tiempo presionando las teclas derecha y izquierda, y tambien es mas rapido.
+ - Ahora la mayoria de los archivos de Magirenko Music estan adentros del ejecutable en un solo archivo, asi tiene mas organizacion
+ - Magirenko Music ahora pesa mas por la organizacion.
+	Adiciones
+ - Ahora hay full manejo de errores.
