@@ -9,7 +9,7 @@
         Title="Magirenko Music" Height="450" Width="825" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="/Assets/Iconos/logo.png" MinWidth="700" MinHeight="425" MaxHeight="625" MaxWidth="900" ResizeMode="CanMinimize">
     <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="411" Width="809">
         <Grid x:Name="grid1" Width="779">
-            <Label Content="Magirenko Music v0.4.1 Alfa" Height="25" Width="152" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,0"/>
+            <Label Content="Magirenko Music v0.4.3 Alfa" Height="25" Width="152" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,0"/>
             <Label Content="Bienvenido a Magirenko Music!" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Black" Margin="250,0,0,325" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="374" FontSize="14" Margin="250,110,0,0">
                 <TextBlock x:Name="desc" TextWrapping="Wrap" Text="Magirenko Music es un reproductor de musica para escuchar musica de fondo en tu pc mientras haces otras cosas!"/>
@@ -19,7 +19,7 @@
             <Label VerticalAlignment="Center" HorizontalAlignment="Left" Height="350" Width="325" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center">
                 <ScrollViewer>
                     <TextBlock x:Name="Cambios" TextWrapping="Wrap" FontSize="10">
-                        <Run x:Name="firstrun" FontSize="20" Text="Que hay de nuevo en la v0.4.1?" BaselineAlignment="TextTop"/>
+                        <Run x:Name="firstrun" FontSize="20" Text="Que hay de nuevo en la v0.4.3?" BaselineAlignment="TextTop"/>
                     </TextBlock>
                </ScrollViewer>
             </Label>

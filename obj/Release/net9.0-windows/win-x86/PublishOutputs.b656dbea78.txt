@@ -1,0 +1,6 @@
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net9.0-windows\win-x86\publish\D3DCompiler_47_cor3.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net9.0-windows\win-x86\publish\PenImc_cor3.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net9.0-windows\win-x86\publish\PresentationNative_cor3.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net9.0-windows\win-x86\publish\vcruntime140_cor3.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net9.0-windows\win-x86\publish\wpfgfx_cor3.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net9.0-windows\win-x86\publish\magirenko_music.exe

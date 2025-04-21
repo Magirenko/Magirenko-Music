@@ -1,0 +1,5 @@
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Debug\net4.8-windows\win-x86\publish\magirenko_music.exe
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Debug\net4.8-windows\win-x86\publish\magirenko_music.pdb
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Debug\net4.8-windows\win-x86\publish\TagLibSharp.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Debug\net4.8-windows\win-x86\publish\MMPL32.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Debug\net4.8-windows\win-x86\publish\MMPL32.pdb

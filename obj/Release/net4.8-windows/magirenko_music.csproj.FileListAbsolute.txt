@@ -1,0 +1,43 @@
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.csproj.AssemblyReference.cache
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\MainWindow.g.cs
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\MusicOverlay.g.cs
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\App.g.cs
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music_Content.g.cs
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music_MarkupCompile.cache
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music_MarkupCompile.lref
+C:\Users\pc\source\repos\magirenko_music\bin\Release\net4.8-windows\magirenko_music.exe.config
+C:\Users\pc\source\repos\magirenko_music\bin\Release\net4.8-windows\magirenko_music.exe
+C:\Users\pc\source\repos\magirenko_music\bin\Release\net4.8-windows\magirenko_music.pdb
+C:\Users\pc\source\repos\magirenko_music\bin\Release\net4.8-windows\TagLibSharp.dll
+C:\Users\pc\source\repos\magirenko_music\bin\Release\net4.8-windows\MMPL32.dll
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\MainWindow.baml
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\MusicOverlay.baml
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.g.resources
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.AssemblyInfoInputs.cache
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenk.593EAA39.Up2Date
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.exe
+C:\Users\pc\source\repos\magirenko_music\obj\Release\net4.8-windows\magirenko_music.pdb
+C:\Users\pc\source\repos\magirenko_music\bin\Release\net4.8-windows\MMPL32.pdb
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net4.8-windows\magirenko_music.exe
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net4.8-windows\magirenko_music.pdb
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net4.8-windows\TagLibSharp.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net4.8-windows\MMPL32.dll
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\bin\Release\net4.8-windows\MMPL32.pdb
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.csproj.AssemblyReference.cache
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\MainWindow.g.cs
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\MusicOverlay.g.cs
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\App.g.cs
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music_Content.g.cs
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music_MarkupCompile.cache
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music_MarkupCompile.lref
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\MainWindow.baml
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\MusicOverlay.baml
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.g.resources
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.AssemblyInfoInputs.cache
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenk.593EAA39.Up2Date
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.exe
+C:\Users\pc\source\repos\Magirenko Music\magirenko_music\obj\Release\net4.8-windows\magirenko_music.pdb

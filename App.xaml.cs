@@ -9,20 +9,21 @@ namespace Magirenko_Music
     /// </summary>
     public partial class App : Application
     {
-        private MainWindow main;
+        private MainWindow? main;
+        string[] acceptedFormats = { ".mp3", ".aac", ".ogg", ".wav", ".flac", ".m4a" };
         void StartUp(object sender, StartupEventArgs e)
         {
             try
             {
                 if (e.Args.Length > 0)
                 {
-                    if (Path.Exists(e.Args[0]) == true)
+                    if (Path.GetDirectoryName(e.Args[0]) != string.Empty || Path.GetFileName(e.Args[0]) != string.Empty)
                     {
-                       switch (Path.GetExtension(e.Args[0]))
+                        switch (acceptedFormats.Contains(Path.GetExtension(e.Args[0])))
                         {
-                            case ".mp3":
+                            case (true):
                                 Process[] process = Process.GetProcessesByName("Magirenko Music");
-                                MainWindow main = new MainWindow();
+                                main = new MainWindow();
                                 main.WindowState = WindowState.Minimized;
                                 main.ReproducirMusica(e.Args[0], true, main.ListaGeneral);
                                 main.Show();
@@ -31,70 +32,23 @@ namespace Magirenko_Music
                                     process[0].Kill();
                                 }
                                 break;
-                            case ".wav":
-                                Process[] process2 = Process.GetProcessesByName("Magirenko Music");
-                                MainWindow main2 = new MainWindow();
-                                main2.WindowState = WindowState.Minimized;
-                                main2.ReproducirMusica(e.Args[0], true, main2.ListaGeneral);
-                                main2.Show();
-                                if (process2.Length > 1)
-                                {
-                                    process2[0].Kill();
-                                }
-                                break;
-                            case ".flac":
-                                Process[] process3 = Process.GetProcessesByName("Magirenko Music");
-                                MainWindow main3 = new MainWindow();
-                                main3.WindowState = WindowState.Minimized;
-                                main3.ReproducirMusica(e.Args[0], true, main3.ListaGeneral);
-                                main3.Show();
-                                if (process3.Length > 1)
-                                {
-                                    process3[0].Kill();
-                                }
-                                break;
-                            case ".ogg":
-                                Process[] process4 = Process.GetProcessesByName("Magirenko Music");
-                                MainWindow main4 = new MainWindow();
-                                main4.WindowState = WindowState.Minimized;
-                                main4.ReproducirMusica(e.Args[0], true, main4.ListaGeneral);
-                                main4.Show();
-                                if (process4.Length > 1)
-                                {
-                                    process4[0].Kill();
-                                }
-                                break;
-                            case ".aac":
-                                Process[] process5 = Process.GetProcessesByName("Magirenko Music");
-                                MainWindow main5 = new MainWindow();
-                                main5.WindowState = WindowState.Minimized;
-                                main5.ReproducirMusica(e.Args[0], true, main5.ListaGeneral);
-                                main5.Show();
-                                if (process5.Length > 1)
-                                {
-                                    process5[0].Kill();
-                                }
-                                break;
-                            case ".m4a":
-                                Process[] process6 = Process.GetProcessesByName("Magirenko Music");
-                                MainWindow main6 = new MainWindow();
-                                main6.WindowState = WindowState.Minimized;
-                                main6.ReproducirMusica(e.Args[0], true, main6.ListaGeneral);
-                                main6.Show();
-                                if (process6.Length > 1)
-                                {
-                                    process6[0].Kill();
-                                }
-                                break;
 
-                            case ".mmpl":
-                                MainWindow main7 = new MainWindow();
-                                main7.abrirpl(e.Args[0], true);
-                                main7.Show();
+                            case (false):
+                                if (Path.GetExtension(e.Args[0]) == ".mmpl")
+                                {
+                                    MainWindow main7 = new MainWindow();
+                                    main7.abrirpl(e.Args[0], true);
+                                    main7.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo cargar el archivo seleccionado por que es corrupto o es un formato incompatible.", "Error al cargar archivo | Magirenko Music", MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
                                 break;
-                            default:
-                                MessageBox.Show("No se pudo cargar el archivo seleccionado por que es corrupto o es un formato incompatible.", "Error al cargar archivo | Magirenko Music", MessageBoxButton.OK, MessageBoxImage.Error);
-                                break;
+                        }
+                        if (main != null)
+                        {
+                            MainWindow = main;
                         }
                     }
                     else
@@ -105,6 +59,7 @@ namespace Magirenko_Music
                 else
                 {
                     main = new MainWindow();
+                    MainWindow = main;
                     main.Show();
                 }
             }
@@ -116,10 +71,13 @@ namespace Magirenko_Music
 
         void exit(object sender, ExitEventArgs e)
         {
-           if (main.pl != null)
-           {
-                main.pl.DescargarMusicas();
-           }
+            if (main != null)
+            {
+                if (main.pl != null)
+                {
+                    main.pl.DescargarMusicas();
+                }
+            }
         }
     }
 
